@@ -11,6 +11,7 @@ import ec.edu.ups.model.Telefono;
 import ec.edu.ups.model.Usuario;
 import ec.edu.ups.vista.VistaTelefono;
 import ec.edu.ups.vista.VistaUsuario;
+import java.util.List;
 
 /**
  *
@@ -32,7 +33,37 @@ public class ControladorUsuario {
         this.telefonoDao = telefonoDao;
     }
     
-    public void verCliente(){
-        
+    public void registrar(){
+        usuario = vistaUsuario.ingresarUsuario();
+        usuarioDao.create(usuario);
+    }
+    
+    public void verUsuario(){
+        String correo = vistaUsuario.buscarUsuarioCorreo();
+        String contrasena = vistaUsuario.buscarUsuarioContrasena();
+        usuario = usuarioDao.read(correo, contrasena);
+    }
+    
+    public void actualizar(){
+        usuario = vistaUsuario.actualizarUsuario();
+        usuarioDao.update(usuario);
+    }
+    
+    public void eliminar(){
+        usuario = vistaUsuario.eliminarUsuario();
+        usuarioDao.delete(usuario);
+    }
+    
+    public void verUsuarios(){
+        List<Usuario> usuarios;
+        usuarios = usuarioDao.findAll();
+        vistaUsuario.verUsuarios(usuarios);
+    }
+    
+    public void agregarTelefono(){
+        int codigo = vistaTelefono.buscarTelefono();
+        telefono = telefonoDao.read(codigo);
+        usuario.agregarTelefono(telefono);
+        usuarioDao.update(usuario);
     }
 }

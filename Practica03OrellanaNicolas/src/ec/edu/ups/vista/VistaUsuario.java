@@ -8,6 +8,7 @@ package ec.edu.ups.vista;
 import ec.edu.ups.controlador.ControladorTelefono;
 import ec.edu.ups.model.Telefono;
 import ec.edu.ups.model.Usuario;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -54,5 +55,36 @@ public class VistaUsuario {
         System.out.println("Apellido:");
         String apellido = teclado.next();
         return new Usuario(cedula, nombre, apellido, correo, contrasena);
+    }
+
+    public Usuario eliminarUsuario() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingrese su contraseña");
+        String contrasena = teclado.next();
+        return new Usuario(null, null, null, null, contrasena);
+    }
+
+    public String buscarUsuarioCorreo() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingrese su correo");
+        String correo = teclado.next();
+        return correo;
+    }
+    
+    public String buscarUsuarioContrasena() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingrese su contraseña");
+        String contrasena = teclado.next();
+        return contrasena;
+    }
+    
+    public void verUsuario(Usuario usuario){
+        System.out.println("Datos del usuario: " + usuario);
+    }
+    
+    public void verUsuarios(List<Usuario> usuarios){
+        for (Usuario usuario : usuarios) {
+            System.out.println("Datos del usuario: " + usuario);
+        }
     }
 }
