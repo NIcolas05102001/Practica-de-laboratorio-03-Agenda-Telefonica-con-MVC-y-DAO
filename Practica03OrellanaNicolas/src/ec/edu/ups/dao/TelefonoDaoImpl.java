@@ -5,10 +5,46 @@
  */
 package ec.edu.ups.dao;
 
+import ec.edu.ups.idao.ITelefonoDao;
+import ec.edu.ups.model.Telefono;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author nicol
  */
-public class TelefonoDaoImpl {
-    
+public class TelefonoDaoImpl implements ITelefonoDao {
+
+    private List<Telefono> listaTelefono;
+
+    public TelefonoDaoImpl() {
+        listaTelefono = new ArrayList<>();
+    }
+
+    @Override
+    public void create(Telefono telefono) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Telefono read(int codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Telefono telefono) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(Telefono telefono) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Telefono> findAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
