@@ -18,6 +18,7 @@ public class Telefono {
     private String tipo;
     private String operadora;
 
+    
     public int getCodigo() {
         return codigo;
     }

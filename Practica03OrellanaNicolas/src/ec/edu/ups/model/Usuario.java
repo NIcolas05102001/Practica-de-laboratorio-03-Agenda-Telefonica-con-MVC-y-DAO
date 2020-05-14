@@ -6,6 +6,7 @@
 package ec.edu.ups.model;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  *
@@ -13,11 +14,16 @@ import java.util.Objects;
  */
 public class Usuario {
 
+    private Scanner teclado;
     private String cedula;
     private String nombre;
     private String apellido;
     private String correo;
     private String contrasena;
+
+    private int cont;
+    private int cont2;
+    private Telefono[] telefonos;
 
     public String getCedula() {
         return cedula;
@@ -60,6 +66,12 @@ public class Usuario {
     }
 
     public Usuario() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingresa el numero de telefonos a ingresar");
+        int x = teclado.nextInt();
+        cont2 = x;
+        telefonos = new Telefono[x];
+        cont = 0;
 
     }
 
@@ -112,9 +124,26 @@ public class Usuario {
         return true;
     }
 
+    public void agregarTelefono(Telefono telefono) {
+        if (cont < cont2) {
+            telefonos[cont] = telefono;
+            cont++;
+        }else{
+            System.out.println("Has llegado al maximo de telefonos");
+        }
+    }
+    
+    public Telefono[] getTelefonos(){
+        return telefonos;
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + ", contrasena=" + contrasena + '}';
+        String telefonos = "";
+        for (int i = 0; i < cont; i++) {
+            telefonos += this.telefonos[i] + "\n";
+        }
+        return "Usuario{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + ", contrasena=" + contrasena + '}' + "\nTelefonos: " + telefonos;
     }
 
 }

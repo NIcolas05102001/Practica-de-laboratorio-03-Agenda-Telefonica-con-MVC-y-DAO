@@ -8,6 +8,7 @@ package ec.edu.ups.dao;
 import ec.edu.ups.idao.ITelefonoDao;
 import ec.edu.ups.model.Telefono;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -24,27 +25,45 @@ public class TelefonoDaoImpl implements ITelefonoDao {
 
     @Override
     public void create(Telefono telefono) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listaTelefono.add(telefono);
     }
 
     @Override
     public Telefono read(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Telefono telefono : listaTelefono) {
+            if(telefono.getCodigo() == codigo){
+                return telefono;
+            }
+        }
+        return null;
     }
 
     @Override
     public void update(Telefono telefono) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < listaTelefono.size(); i++) {
+            Telefono t = listaTelefono.get(i);
+            if(t.getCodigo() == telefono.getCodigo()){
+                listaTelefono.set(i, telefono);
+                break;
+            }
+        }
     }
 
     @Override
     public void delete(Telefono telefono) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Iterator<Telefono> it = listaTelefono.iterator();
+        while(it.hasNext()){
+            Telefono t = it.next();
+            if(t.getCodigo() == telefono.getCodigo()){
+                it.remove();
+                break;
+            }
+        }
     }
 
     @Override
     public List<Telefono> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return listaTelefono;
     }
 
 }

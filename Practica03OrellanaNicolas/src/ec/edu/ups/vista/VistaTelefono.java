@@ -5,16 +5,72 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.model.Telefono;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  *
  * @author nicol
  */
 public class VistaTelefono {
-    public void imprimirDatosTelefono(int codigo, String numero, String tipo, String operadora){
-        System.out.println("**** DATOS TELEFONO ****");
-        System.out.println("Codigo: " + codigo);
-        System.out.println("Numero: " + numero);
-        System.out.println("Tipo: " + tipo);
-        System.out.println("Operadora " + operadora);
+
+    Scanner teclado;
+
+    public VistaTelefono() {
+        teclado = new Scanner(System.in);
+    }
+
+    public Telefono ingresarTelefono() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingresar datos del telefono");
+        System.out.println("Codigo:");
+        int codigo = teclado.nextInt();
+        System.out.println("Numero:");
+        String numero = teclado.next();
+        System.out.println("Tipo:");
+        String tipo = teclado.next();
+        System.out.println("Operadora");
+        String operadora = teclado.next();
+        return new Telefono(codigo, numero, tipo, operadora);
+    }
+
+    public Telefono actualizarTelefono() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingrese el codigo del telefono a actualizar");
+        System.out.println("Codigo:");
+        int codigo = teclado.nextInt();
+        System.out.println("Ingrese los nuevos datos");
+        System.out.println("Numero:");
+        String numero = teclado.next();
+        System.out.println("Tipo:");
+        String tipo = teclado.next();
+        System.out.println("Operadora");
+        String operadora = teclado.next();
+        return new Telefono(codigo, numero, tipo, operadora);
+    }
+
+    public Telefono eliminarTelefono() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingrese el codigo del numero a eliminar");
+        int codigo = teclado.nextInt();
+        return new Telefono(codigo, null, null, null);
+    }
+
+    public int buscarTelefono() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingrese el codigo del numero a buscar");
+        int codigo = teclado.nextInt();
+        return codigo;
+    }
+    
+    public void verTelefono(Telefono telefono){
+        System.out.println("Datos del usuario: " + telefono);
+    }
+    
+    public void verTelefonos(List<Telefono> telefonos){
+        for (Telefono telefono : telefonos) {
+            System.out.println("Datos de la telefonia: " + telefonos);
+        }
     }
 }

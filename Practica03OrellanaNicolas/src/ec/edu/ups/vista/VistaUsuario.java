@@ -5,18 +5,54 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorTelefono;
+import ec.edu.ups.model.Telefono;
+import ec.edu.ups.model.Usuario;
+import java.util.Scanner;
+
 /**
  *
  * @author nicol
  */
 public class VistaUsuario {
 
-    public void imprimirDatosUsuario(String cedula, String nombre, String apellido, String correo, String contrasena) {
-        System.out.println("**** DATOS CLIENTE ****");
-        System.out.println("Id: " + cedula);
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Apellido: " + apellido);
-        System.out.println("Correo: " + correo);
-        System.out.println("Contraseña " + contrasena);
+    Scanner teclado;
+
+    public VistaUsuario() {
+        teclado = new Scanner(System.in);
+    }
+
+    public Usuario ingresarUsuario() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingrese los siguientes datos para su registro:");
+        System.out.println("Cedula:");
+        String cedula = teclado.next();
+        System.out.println("Nombre:");
+        String nombre = teclado.next();
+        System.out.println("Apellido:");
+        String apellido = teclado.next();
+        System.out.println("Correo:");
+        String correo = teclado.next();
+        System.out.println("Contraseña:");
+        String contrasena = teclado.next();
+        return new Usuario(cedula, nombre, apellido, correo, contrasena);
+    }
+
+    public Usuario actualizarUsuario() {
+        teclado = new Scanner(System.in);
+        System.out.println("Ingrese su correo y contraseña");
+        System.out.print("Correo: ");
+        String correo = teclado.next();
+        System.out.println("");
+        System.out.print("Contraseña: ");
+        String contrasena = teclado.next();
+        System.out.println("");
+        System.out.println("Cedula:");
+        String cedula = teclado.next();
+        System.out.println("Nombre:");
+        String nombre = teclado.next();
+        System.out.println("Apellido:");
+        String apellido = teclado.next();
+        return new Usuario(cedula, nombre, apellido, correo, contrasena);
     }
 }
