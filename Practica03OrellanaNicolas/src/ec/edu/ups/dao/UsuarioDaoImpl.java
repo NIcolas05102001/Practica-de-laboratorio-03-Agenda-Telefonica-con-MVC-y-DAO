@@ -29,9 +29,9 @@ public class UsuarioDaoImpl implements IUsuarioDao {
     }
 
     @Override
-    public Usuario read(String correo, String contrasena) {
+    public Usuario read(String contrasena) {
         for (Usuario usuario : listaUsuario) {
-            if (usuario.getCorreo() == correo) {
+            if (usuario.getContrasena()== contrasena) {
                 return usuario;
             }
         }
@@ -42,7 +42,7 @@ public class UsuarioDaoImpl implements IUsuarioDao {
     public void update(Usuario usuario) {
         for (int i = 0; i < listaUsuario.size(); i++) {
             Usuario u = listaUsuario.get(i);
-            if (u.getCorreo() == usuario.getCorreo()) {
+            if (u.getContrasena()== usuario.getContrasena()) {
                 listaUsuario.set(i, usuario);
                 break;
             }

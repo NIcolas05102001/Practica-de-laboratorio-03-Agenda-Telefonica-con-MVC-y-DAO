@@ -75,7 +75,8 @@ public class Usuario {
 
     }
 
-    public Usuario(String cedula, String nombre, String apellido, String correo, String contrasena) {
+    public Usuario(Scanner teclado, String cedula, String nombre, String apellido, String correo, String contrasena) {
+        this.teclado = teclado;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -83,22 +84,11 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.cedula);
-        hash = 97 * hash + Objects.hashCode(this.nombre);
-        hash = 97 * hash + Objects.hashCode(this.apellido);
-        hash = 97 * hash + Objects.hashCode(this.correo);
-        hash = 97 * hash + Objects.hashCode(this.contrasena);
-        return hash;
-    }
+  
+
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -106,24 +96,21 @@ public class Usuario {
             return false;
         }
         final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.cedula, other.cedula)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellido, other.apellido)) {
-            return false;
-        }
-        if (!Objects.equals(this.correo, other.correo)) {
-            return false;
-        }
-        if (!Objects.equals(this.contrasena, other.contrasena)) {
+        if (this.contrasena != other.contrasena) {
             return false;
         }
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.contrasena);
+        return hash;
+    }
+
+    
+    
     public void agregarTelefono(Telefono telefono) {
         if (cont < cont2) {
             telefonos[cont] = telefono;

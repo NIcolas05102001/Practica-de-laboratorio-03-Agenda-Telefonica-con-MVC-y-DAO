@@ -39,9 +39,9 @@ public class ControladorUsuario {
     }
     
     public void verUsuario(){
-        String correo = vistaUsuario.buscarUsuarioCorreo();
-        String contrasena = vistaUsuario.buscarUsuarioContrasena();
-        usuario = usuarioDao.read(correo, contrasena);
+        String contrasena = vistaUsuario.buscarUsuario();
+        usuario = usuarioDao.read(contrasena);
+        vistaUsuario.verUsuario(usuario);
     }
     
     public void actualizar(){

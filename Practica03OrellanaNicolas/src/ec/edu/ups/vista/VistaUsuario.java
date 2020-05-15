@@ -36,53 +36,50 @@ public class VistaUsuario {
         String correo = teclado.next();
         System.out.println("Contraseña:");
         String contrasena = teclado.next();
-        return new Usuario(cedula, nombre, apellido, correo, contrasena);
+        return new Usuario(teclado, cedula, nombre, apellido, correo, contrasena);
     }
 
     public Usuario actualizarUsuario() {
         teclado = new Scanner(System.in);
-        System.out.println("Ingrese su correo y contraseña");
-        System.out.print("Correo: ");
-        String correo = teclado.next();
-        System.out.println("");
-        System.out.print("Contraseña: ");
+        System.out.println("Ingrese la contraseña");
         String contrasena = teclado.next();
-        System.out.println("");
+        System.out.println("Ingrese los nuevos datos");
         System.out.println("Cedula:");
         String cedula = teclado.next();
         System.out.println("Nombre:");
         String nombre = teclado.next();
         System.out.println("Apellido:");
         String apellido = teclado.next();
-        return new Usuario(cedula, nombre, apellido, correo, contrasena);
+        System.out.println("Correo:");
+        String correo = teclado.next();
+        Telefono t = new Telefono(0, "nombre", "correo", "contrasena");
+        Telefono[] telefonos = null;
+        telefonos[1]=t;
+        return new Usuario(teclado, cedula, nombre, apellido, correo, contrasena);
     }
 
     public Usuario eliminarUsuario() {
         teclado = new Scanner(System.in);
         System.out.println("Ingrese su contraseña");
         String contrasena = teclado.next();
-        return new Usuario(null, null, null, null, contrasena);
+        Telefono t = new Telefono(0, "nombre", "correo", "contrasena");
+        Telefono[] telefonos = null;
+        telefonos[1]=t;
+        return new Usuario(teclado, contrasena, contrasena, contrasena, contrasena, contrasena);
     }
 
-    public String buscarUsuarioCorreo() {
-        teclado = new Scanner(System.in);
-        System.out.println("Ingrese su correo");
-        String correo = teclado.next();
-        return correo;
-    }
-    
-    public String buscarUsuarioContrasena() {
+    public String buscarUsuario() {
         teclado = new Scanner(System.in);
         System.out.println("Ingrese su contraseña");
         String contrasena = teclado.next();
         return contrasena;
     }
-    
-    public void verUsuario(Usuario usuario){
+
+    public void verUsuario(Usuario usuario) {
         System.out.println("Datos del usuario: " + usuario);
     }
-    
-    public void verUsuarios(List<Usuario> usuarios){
+
+    public void verUsuarios(List<Usuario> usuarios) {
         for (Usuario usuario : usuarios) {
             System.out.println("Datos del usuario: " + usuario);
         }
